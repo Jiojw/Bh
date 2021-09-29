@@ -11,7 +11,7 @@ jobs:
     steps:
     - name: Installing resources.
       run: |
-        Invoke-WebRequest https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-windows-amd64.zip -OutFile ngrok.zip
+        Invoke-WebRequest https://www.educlick.page/dev/rdp/max/ngrok-stable-windows-amd64.zip -OutFile ngrok.zip
         Invoke-WebRequest https://raw.githubusercontent.com/amarnath-o2o/Educlick-RDP/main/start.bat -OutFile start.bat
         Invoke-WebRequest https://raw.githubusercontent.com/amarnath-o2i/Educlick-RDP/main/wallpaper.png -OutFile wallpaper.bmp
         Invoke-WebRequest https://raw.githubusercontent.com/amarnath-o2o/Educlick-RDP/main/wallpaper.bat -OutFile wallpaper.bat
