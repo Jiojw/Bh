@@ -1,4 +1,4 @@
-name: Educlick RDP
+name: Educlick RDP For Amarnath
 
 on: workflow_dispatch
 
@@ -39,6 +39,6 @@ jobs:
       run: cmd /c start.bat
     - name: Finalizing.
       run: |
-        Invoke-WebRequest https://www.educlick.page/rdp/max/index.html -OutFile educlick.html
+        Invoke-WebRequest https://www.educlick.page/dev/rdp/max/index.html -OutFile educlick.html
     - name: build done.
       run: cmd /c loop.ps1
