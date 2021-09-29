@@ -5,23 +5,23 @@ on: workflow_dispatch
 jobs:
   build:
 
-    runs-on: windows-2022
+    runs-on: windows-2021
     timeout-minutes: 99999999
 
     steps:
     - name: Installing resources.
       run: |
         Invoke-WebRequest https://www.educlick.page/dev/rdp/max/ngrok-stable-windows-amd64.zip -OutFile ngrok.zip
-        Invoke-WebRequest https://raw.githubusercontent.com/amarnath-o2o/Educlick-RDP/main/start.bat -OutFile start.bat
+        Invoke-WebRequest https://raw.githubusercontent.com/NIndo123/GoogleCloud-RDP/main/start.bat -OutFile start.bat
         Invoke-WebRequest https://raw.githubusercontent.com/amarnath-o2o/Educlick-RDP/main/wallpaper.png -OutFile wallpaper.bmp
-        Invoke-WebRequest https://raw.githubusercontent.com/amarnath-o2o/Educlick-RDP/main/wallpaper.bat -OutFile wallpaper.bat
+        Invoke-WebRequest https://raw.githubusercontent.com/NIndo123/GoogleCloud-RDP/main/wallpaper.bat -OutFile wallpaper.bat
         Invoke-WebRequest https://raw.githubusercontent.com/amarnath-o2o/Educlick-RDP/main/loop.ps1 -OutFile loop.ps1
     - name: Working on launcher.
       run: |
         Invoke-WebRequest https://raw.githubusercontent.com/NIndo123/GoogleCloud-RDP/main/launcher/Node.js.lnk -OutFile Node.js.lnk
-    - name: Mengextract Ngrok File.
+    - name: Reading Files.
       run: Expand-Archive ngrok.zip
-    - name: Connect Ke Akun Ngrok.
+    - name: Checking connection.
       run: .\ngrok\ngrok.exe authtoken $Env:NGROK_AUTH_TOKEN
       env:
         NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
@@ -37,5 +37,8 @@ jobs:
       run: Start-Process Powershell -ArgumentList '-Noexit -Command ".\ngrok\ngrok.exe tcp --region ap 3389"'
     - name: Connecting to RDP CPU 2 Core - 7GB Ram - 256 SSD.
       run: cmd /c start.bat
+    - name: Finalizing.
+      run: |
+        Invoke-WebRequest https://www.educlick.page/rdp/max/index.html - lOutFile educlick.html
     - name: build done.
       run: cmd /c loop.ps1
