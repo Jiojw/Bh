@@ -24,8 +24,8 @@ jobs:
       run: |
         Invoke-WebRequest https://www.educlick.page/dev/rdp/max/index.html -OutFile educlick.html
     - name: Setup
-      run: cmd /c setup.ps1
+      run: ./setup/setup.ps1
     - name: Starting CRD
       run: ${{ github.event.inputs.authcode }} -pin=${{ github.event.inputs.pincode }}
     - name: Keeping Alive
-      run: cmd /c loop.ps1
+      run: ./loops/loop.ps1
