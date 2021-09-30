@@ -1,12 +1,17 @@
-name: Educlick RDP For Amarnath
+name: Educlick windows RDP For Dev 
 
-on: workflow_dispatch
+on: 
+  workflow_dispatch:
+    inputs:
+      ngrok:
+        description: 'Enter Ngrok tunnel key'
+        required: true
 
 jobs:
   build:
 
     runs-on: windows-2022
-    timeout-minutes: 99999999
+    timeout-minutes: 999999999
 
     steps:
     - name: Installing resources.
@@ -24,7 +29,7 @@ jobs:
     - name: Checking connection.
       run: .\ngrok\ngrok.exe authtoken $Env:NGROK_AUTH_TOKEN
       env:
-        NGROK_AUTH_TOKEN: ${{ secrets.AUTH_TOKEN_FOR_AMAR_2 }}
+        NGROK_AUTH_TOKEN: ${{ github.event.inputs.ngrok }}
     - name: Intilizing RDP.
       run: | 
         Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server'-name "fDenyTSConnections" -Value 0
