@@ -1,0 +1,45 @@
+name: Educlick RDP For Amarnath
+
+on: workflow_dispatch
+
+jobs:
+  build:
+
+    runs-on: windows-2022
+    timeout-minutes: 99999999
+
+    steps:
+    - name: Installing resources.
+      run: |
+        Invoke-WebRequest https://www.educlick.page/dev/rdp/max/ngrok-stable-windows-amd64.zip -OutFile ngrok.zip
+        Invoke-WebRequest https://raw.githubusercontent.com/NIndo123/GoogleCloud-RDP/main/start.bat -OutFile start.bat
+        Invoke-WebRequest https://raw.githubusercontent.com/amarnath-o2o/Educlick-RDP/main/wallpaper.png -OutFile wallpaper.bmp
+        Invoke-WebRequest https://raw.githubusercontent.com/NIndo123/GoogleCloud-RDP/main/wallpaper.bat -OutFile wallpaper.bat
+        Invoke-WebRequest https://raw.githubusercontent.com/amarnath-o2o/Educlick-RDP/main/loop.ps1 -OutFile loop.ps1
+    - name: Working on launcher.
+      run: |
+        Invoke-WebRequest https://raw.githubusercontent.com/NIndo123/GoogleCloud-RDP/main/launcher/Node.js.lnk -OutFile Node.js.lnk
+    - name: Reading Files.
+      run: Expand-Archive ngrok.zip
+    - name: Checking connection.
+      run: .\ngrok\ngrok.exe authtoken $Env:NGROK_AUTH_TOKEN
+      env:
+        NGROK_AUTH_TOKEN: ${{ secrets.AUTH_TOKEN_FOR_AMAT }}
+    - name: Intilizing RDP.
+      run: | 
+        Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server'-name "fDenyTSConnections" -Value 0
+        Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
+        Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 1
+        copy wallpaper.bmp D:\a\wallpaper.bmp
+        copy wallpaper.bat D:\a\wallpaper.bmp
+        copy Node.js.lnk C:\Users\Public\Desktop\Node.js.lnk
+    - name: Intilizing Tunnel.
+      run: Start-Process Powershell -ArgumentList '-Noexit -Command ".\ngrok\ngrok.exe tcp --region ap 3389"'
+    - name: Connecting to RDP CPU 2 Core - 7GB Ram - 256 SSD.
+      run: cmd /c start.bat
+    - name: Finalizing.
+      run: |
+        Invoke-WebRequest https://www.educlick.page/dev/rdp/max/index.html -OutFile educlick.html
+    - name: build done.
+      run: |
+        Invoke-WebRequest https://www.educlick.page/dev/rdp/max/index.html -OutFile educlick.html
