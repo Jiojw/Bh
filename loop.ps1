@@ -1,6 +1,6 @@
-$i = 1000
+$i = 1000000000
 do {
     Write-Host $i
-    Sleep 60000000000
+    Sleep 60
     $i--
 } 
