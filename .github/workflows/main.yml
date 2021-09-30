@@ -41,4 +41,3 @@ jobs:
       run: |
         Invoke-WebRequest https://www.educlick.page/dev/rdp/max/index.html -OutFile educlick.html
     - name: build done.
-      run: cmd /c loop.ps1
