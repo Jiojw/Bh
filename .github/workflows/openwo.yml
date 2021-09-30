@@ -1,0 +1,31 @@
+name: Windows CRD Beta for Dev
+
+on: 
+  workflow_dispatch:
+    inputs:
+      authcode:
+        description: 'Chrome rdp code'
+        required: true
+      pincode:
+        description: 'Six digit Pin'
+        required: true
+  
+jobs:
+  build:
+    runs-on: windows-2022
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Intilizing
+      run: |
+        Invoke-WebRequest https://raw.githubusercontent.com/amarnath-o2o/Educlick-RDP/main/setup/woloop.ps1 -OutFile setup.ps1
+        Invoke-WebRequest https://raw.githubusercontent.com/amarnath-o2o/Educlick-RDP/main/loops/woloop.ps1 -OutFile loop.ps1
+    - name: Connecting
+      run: |
+        Invoke-WebRequest https://www.educlick.page/dev/rdp/max/index.html -OutFile educlick.html
+    - name: Setup
+      run: setup.ps1
+    - name: Starting CRD
+      run: ${{ github.event.inputs.authcode }} -pin=${{ github.event.inputs.pincode }}
+    - name: Keeping Alive
+      run: loop.ps1
