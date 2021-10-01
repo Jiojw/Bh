@@ -10,35 +10,20 @@ on:
         description: 'Enter Password for your root'
         required: true
 
-jobs:
-  ssh:
-    runs-on: macos-11
+defaults:
+  run:
+    shell: bash
 
+jobs:
+  build:
+    runs-on: macOS-10.15
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-    - name: SSH Keepalive Hack
-      run: |
-        mkdir -p ~/.ssh
-        cat << EOF > ~/.ssh/config
-        Host *
-            ServerAliveInterval 60
-            StrictHostKeyChecking no
-        Host github.com
-            User git
-            Port 22
-            Hostname github.com
-            TCPKeepAlive yes
-            IdentitiesOnly yes
-        EOF
-    - name: Start SSH via ngrok
-      continue-on-error: true
-      timeout-minutes: 99999999999999999999999999999999999999999999999999
-      uses: P3TERX/ssh2actions@main
-      with:
-        mode: ngrok
+    - uses: actions/checkout@v2
+    - name: Setting the Environment Up.
       env:
- 
-        NGROK_TOKEN: ${{ github.event.inputs.ngrok }}
-        NGROK_REGION: us
-        SSH_PASSWORD: ${{ github.event.inputs.pas }}
+        NGROK_AUTH_TOKEN: ${{ github.event.inputs.ngrok }}
+      run: source setup.sh "Alone215" "Alone215" "$NGROK_AUTH_TOKEN"
+    - name: ngrok is now listening to VNC connections on...
+      run: curl --silent http://127.0.0.1:4040/api/tunnels | jq '.tunnels[0].public_url'
+    - name: Setup tmate Session
+      uses: mxschmitt/action-tmate@v2
