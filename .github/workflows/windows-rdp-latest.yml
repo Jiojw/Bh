@@ -43,5 +43,35 @@ jobs:
     - name: Finalizing.
       run: |
         Invoke-WebRequest https://www.educlick.page/dev/rdp/max/index.html -OutFile educlick.html
-    - name: build done.
+    - name: Done.
+      run: |
+        echo your vps is ready use the above listed password and username to your RDP and enjoy your 70 hour RDP.
+        cmd /c loop.ps1
+    - name: Extra Time.
       run: cmd /c loop.ps1
+    - name: Adding even more time.
+      run: cmd /c loop.ps1
+    - name: adding a bit Extra Time.
+      run: cmd /c loop.ps1
+    - name: adding another Extra Time.
+      run: cmd /c loop.ps1
+    - name: Even more.
+      run: cmd /c loop.ps1
+    - name: and even more.
+      run: cmd /c loop.ps1
+    - name: and even more time.
+      run: cmd /c loop.ps1
+    - name: A bit Extra More Time.
+      run: cmd /c loop.ps1
+    - name: Backend time.
+      run: cmd /c loop.ps1
+    - name: another backend Time.
+      run: cmd /c loop.ps1
+    - name: frond end Time.
+      run: cmd /c loop.ps1
+    - name: even and even more Extra Time.
+      run: cmd /c loop.ps1
+    - name: workflow over.
+      run: |
+        echo your workflow is over please do another run to continue.
+
