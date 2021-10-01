@@ -47,5 +47,8 @@ jobs:
       run: |
         ./loop.ps1
         echo your vps is ready use the above listed password and username to your RDP and enjoy your 70 hour RDP.
+    - name: Done 1.
+      run: |
+        ./loop.ps1
     - name: Extra Time.
       run: echo done
