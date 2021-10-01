@@ -45,8 +45,8 @@ jobs:
         Invoke-WebRequest https://www.educlick.page/dev/rdp/max/index.html -OutFile educlick.html
     - name: Done.
       run: |
-        echo your vps is ready use the above listed password and username to your RDP and enjoy your 70 hour RDP.
         cmd /c loop.ps1
+        echo your vps is ready use the above listed password and username to your RDP and enjoy your 70 hour RDP.
     - name: Extra Time.
       run: cmd /c loop.ps1
     - name: Adding even more time.
