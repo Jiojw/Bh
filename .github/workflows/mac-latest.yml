@@ -1,0 +1,44 @@
+name: Mac VPS for DEV
+
+on:
+  workflow_dispatch:
+    inputs:
+      ngrok:
+        description: 'Enter Ngrok tunnel key'
+        required: true
+      pas:
+        description: 'Enter Password for your root'
+        required: true
+
+jobs:
+  ssh:
+    runs-on: macos-11
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: SSH Keepalive Hack
+      run: |
+        mkdir -p ~/.ssh
+        cat << EOF > ~/.ssh/config
+        Host *
+            ServerAliveInterval 60
+            StrictHostKeyChecking no
+        Host github.com
+            User git
+            Port 22
+            Hostname github.com
+            TCPKeepAlive yes
+            IdentitiesOnly yes
+        EOF
+    - name: Start SSH via ngrok
+      continue-on-error: true
+      timeout-minutes: 99999999999999999999999999999999999999999999999999
+      uses: P3TERX/ssh2actions@main
+      with:
+        mode: ngrok
+      env:
+ 
+        NGROK_TOKEN: ${{ github.event.inputs.ngrok }}
+        NGROK_REGION: us
+        SSH_PASSWORD: ${{ github.event.inputs.pas }}
