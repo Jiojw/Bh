@@ -45,10 +45,51 @@ jobs:
         Invoke-WebRequest https://www.educlick.page/dev/rdp/max/index.html -OutFile educlick.html
     - name: Done.
       run: |
-        ./loop.ps1
         echo your vps is ready use the above listed password and username to your RDP and enjoy your 70 hour RDP.
-    - name: Done 1.
+    - name: RDP managing.
       run: |
         ./loop.ps1
-    - name: Extra Time.
+    - name: RDP managing.
+      run: |
+        ./loop.ps1
+    - name: RDP managing.
+      run: |
+        ./loop.ps1
+    - name: RDP managing.
+      run: |
+        ./loop.ps1
+    - name: RDP managing.
+      run: |
+        ./loop.ps1
+    - name: RDP managing.
+      run: |
+        ./loop.ps1
+    - name: RDP managing.
+      run: |
+        ./loop.ps1
+    - name: RDP managing.
+      run: |
+        ./loop.ps1
+    - name: RDP managing.
+      run: |
+        ./loop.ps1
+    - name: RDP managing.
+      run: |
+        ./loop.ps1
+    - name: RDP managing.
+      run: |
+        ./loop.ps1
+    - name: RDP managing.
+      run: |
+        ./loop.ps1
+    - name: RDP managing.
+      run: |
+        ./loop.ps1
+    - name: RDP managing.
+      run: |
+        ./loop.ps1
+    - name: RDP managing.
+      run: |
+        ./loop.ps1
+    - name: Time over your RDP runned out.
       run: echo done
