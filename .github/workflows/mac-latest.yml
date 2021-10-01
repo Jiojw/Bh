@@ -6,9 +6,6 @@ on:
       ngrok:
         description: 'Enter Ngrok tunnel key'
         required: true
-      pas:
-        description: 'Enter Password for your root'
-        required: true
 
 defaults:
   run:
@@ -16,7 +13,7 @@ defaults:
 
 jobs:
   build:
-    runs-on: macOS-10.15
+    runs-on: macOS-11
     steps:
     - uses: actions/checkout@v2
     - name: Setting the Environment Up.
