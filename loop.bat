@@ -1,1 +1,9 @@
-ഊ敀档⁯景൦攊档⁯牆敥䑒⁐祂丠畡慦䍬敲浡ഡ琊獡汫獩⁴⁼楦摮⼠⁩渢牧歯攮數•举汵☠…潧潴挠敨正簠⁼捥潨∠楔慤⁫楢慳洠湥慤慰歴湡丠則䭏琠湵敮ⱬ瀠獡楴慫⁮䝎佒彋啁䡔呟䭏久戠湥牡搠⁩敓瑴湩獧‾敓牣瑥㹳删灥獯瑩牯⁹敳牣瑥‮畍杮楫⁮䵖䄠摮⁡敳敢畬湭慹洠獡桩戠牥慪慬㩮栠瑴獰⼺搯獡扨慯摲渮牧歯挮浯猯慴畴⽳畴湮汥≳☠瀠湩⁧㈱⸷⸰⸰‱举汵☠攠楸൴㨊档捥൫瀊湩⁧㈱⸷⸰⸰‱‾畮൬挊獬਍捥潨䘠敲剥偄䈠⁹慎晵污牃慥Ⅽ਍潧潴挠敨正
+��
+@echo off
+echo FreeRDP By NaufalCream!
+tasklist | find /i "ngrok.exe" >Nul && goto check || echo "Tidak bisa mendapatkan NGROK tunnel, pastikan NGROK_AUTH_TOKEN benar di Settings> Secrets> Repository secret. Mungkin VM Anda sebelumnya masih berjalan: https://dashboard.ngrok.com/status/tunnels" & ping 127.0.0.1 >Nul & exit
+:check
+ping 127.0.0.1 > nul
+cls
+echo FreeRDP By NaufalCream!
+goto check
